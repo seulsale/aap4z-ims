@@ -1,0 +1,17 @@
+- name: Create project for setting up the catalog
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    vars/credentials.yml
+  tasks:
+    - name: Create 'aap4zos-ims' project.
+      tags: project, projects
+      ansible.controller.project:
+        controller_oauthtoken: "{{ controller_token }}"
+        name: "aap4zos"
+        description: "Sample playbooks for automating IMS using Ansible Automation Platform."
+        organization: "Default"
+        scm_update_on_launch: false
+        scm_type: git
+        scm_url: "https://github.com/seulsale/aap4z-ims.git"
+        validate_certs: false

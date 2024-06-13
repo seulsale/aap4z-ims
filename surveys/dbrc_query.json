@@ -1,0 +1,30 @@
+{
+    "name": "List DBRC database",
+    "description": "Retrieve and display details of the specified database in DBRC",
+    "spec": [
+        {
+            "type": "textarea",
+            "question_name": "Database name",
+            "question_description": "The database name for which details will be retrieved.",
+            "variable": "dbrc_database",
+            "required": true,
+            "default": "DFSCD000"
+        },
+        {
+            "type": "textarea",
+            "question_name": "Database name",
+            "question_description": "The database name for which details will be retrieved.",
+            "variable": "ims_hlq",
+            "required": true,
+            "default": "DFSCD000"
+        },
+        {
+            "type": "textarea",
+            "question_name": "Database name",
+            "question_description": "The database name for which details will be retrieved.",
+            "variable": "ims_steplib",
+            "required": true,
+            "default": "DFSCD000"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+- hosts: zos_host
+  gather_facts: false
+  environment: "{{ environment_vars }}"
+  tasks:
+    - name: Use dbrc module to retrieve catalog database details
+      ibm.ibm_zos_ims.ims_dbrc:
+        steplib:
+          - "{{ ims_steplib }}"
+        recon1: "{{ ims_hlq }}.RECON1"
+        recon2: "{{ ims_hlq }}.RECON2"
+        recon3: "{{ ims_hlq }}.RECON3"
+        command:
+          - LIST.DB DBD({{ dbrc_database }})
+      register: registered_dbs_output
+
+    - name: Display output
+      ansible.builtin.debug:
+        var: registered_dbs_output
