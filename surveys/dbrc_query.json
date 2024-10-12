@@ -4,25 +4,33 @@
     "spec": [
         {
             "type": "textarea",
-            "question_name": "Database name",
-            "question_description": "The database name for which details will be retrieved.",
-            "variable": "dbrc_database",
+            "question_name": "STEPLIB",
+            "question_description": "Location of the steplib data set",
+            "variable": "steplib",
             "required": true,
-            "default": "DFSCD000"
+            "default": ""
+        },
+        {
+            "type": "textarea",
+            "question_name": "DBDLIB",
+            "question_description": "Location of the dbdlib data set",
+            "variable": "dbdlib",
+            "required": true,
+            "default": ""
+        },
+        {
+            "type": "textarea",
+            "question_name": "Recon data sets HLQ",
+            "question_description": "The HLQ where the RECON data sets are located.",
+            "variable": "recon_hlq",
+            "required": true,
+            "default": ""
         },
         {
             "type": "textarea",
             "question_name": "Database name",
-            "question_description": "The database name for which details will be retrieved.",
-            "variable": "ims_hlq",
-            "required": true,
-            "default": "DFSCD000"
-        },
-        {
-            "type": "textarea",
-            "question_name": "Database name",
-            "question_description": "The database name for which details will be retrieved.",
-            "variable": "ims_steplib",
+            "question_description": "Database name for which details will be retrieved.",
+            "variable": "database_name",
             "required": true,
             "default": "DFSCD000"
         }

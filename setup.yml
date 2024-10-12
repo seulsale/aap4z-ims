@@ -4,7 +4,7 @@
   vars_files:
     vars/credentials.yml
   tasks:
-    - name: Create 'aap4zos-ims' project.
+    - name: Create 'aap4z-ims' project.
       tags: project, projects
       ansible.controller.project:
         controller_oauthtoken: "{{ controller_token }}"
@@ -15,3 +15,20 @@
         scm_type: git
         scm_url: "https://github.com/seulsale/aap4z-ims.git"
         validate_certs: false
+
+    - name: Create 'IMS DBRC' job template.
+      tags: job_template, template, zos_job_submit, job_submit
+      ansible.controller.job_template:
+        controller_oauthtoken: "{{ controller_token }}"
+        name: "z/OS Job Submit"
+        description: "This playbook shows a simple job submission from variable JCL file on the controller."
+        job_type: "run"
+        organization: "Default"
+        inventory: "AAP z/OS"
+        project: "aap4zos"
+        playbook: "playbooks/dbrc_list_registered_dbs.yml"
+        credentials: "z/OS Host SSH Key"
+        state: "present"
+        validate_certs: false
+        survey_enabled: true
+        survey_spec: "{{ lookup('file', 'dbrc_query.json') }}"
