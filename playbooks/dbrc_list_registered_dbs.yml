@@ -1,6 +1,9 @@
 - hosts: zos_host
   gather_facts: false
   environment: "{{ environment_vars }}"
+  collections:
+    - ibm.ibm_zos_core
+    - ibm.ibm_zos_ims
   tasks:
     - name: Use dbrc module to retrieve catalog database details
       ibm.ibm_zos_ims.ims_dbrc:

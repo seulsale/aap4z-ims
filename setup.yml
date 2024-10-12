@@ -1,12 +1,13 @@
 - name: Create project for setting up the catalog
-  hosts: localhost
+  hosts: all
+  connection: local
   gather_facts: false
   vars_files:
     vars/credentials.yml
   tasks:
     - name: Create 'aap4z-ims' project.
       tags: project, projects
-      ansible.controller.project:
+      awx.awx.project:
         controller_oauthtoken: "{{ controller_token }}"
         name: "aap4zos"
         description: "Sample playbooks for automating IMS using Ansible Automation Platform."
@@ -18,10 +19,10 @@
 
     - name: Create 'IMS DBRC' job template.
       tags: job_template, template, zos_job_submit, job_submit
-      ansible.controller.job_template:
+      awx.awx.job_template:
         controller_oauthtoken: "{{ controller_token }}"
-        name: "z/OS Job Submit"
-        description: "This playbook shows a simple job submission from variable JCL file on the controller."
+        name: "DBRC List Database"
+        description: "This playbook lists the RECON information for the IMS database provided."
         job_type: "run"
         organization: "Default"
         inventory: "AAP z/OS"
@@ -31,4 +32,4 @@
         state: "present"
         validate_certs: false
         survey_enabled: true
-        survey_spec: "{{ lookup('file', 'dbrc_query.json') }}"
+        survey_spec: "{{ lookup('file', 'surveys/dbrc_query.json') }}"
