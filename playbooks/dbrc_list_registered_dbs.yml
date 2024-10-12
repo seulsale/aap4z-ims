@@ -14,7 +14,7 @@
         recon2: "{{ recon_hlq }}.RECON2"
         recon3: "{{ recon_hlq }}.RECON3"
         command:
-          - LIST.DB DBD({{ database_name }})
+          - "LIST.DB DBD({{ database_name }})"
       register: registered_dbs_output
 
     - name: Display output
